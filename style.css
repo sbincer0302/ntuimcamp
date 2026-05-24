@@ -921,6 +921,132 @@ html[data-theme="dark"] .hero-title-accent {
   font-size: 0.95rem;
 }
 
+/* ===== Random dog ===== */
+.section-dog {
+  border-block: 1px solid var(--border);
+}
+
+.dog-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.dog-viewer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+}
+
+.dog-placeholder {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  max-width: 16rem;
+  line-height: 1.6;
+}
+
+.dog-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--bg-elevated);
+  z-index: 2;
+}
+
+.dog-viewer:not(.is-loading) .dog-loading[hidden] {
+  display: none;
+}
+
+.dog-viewer.is-loading .dog-loading {
+  display: flex;
+}
+
+.dog-spinner {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 2px solid var(--border);
+  border-top-color: var(--text);
+  border-radius: 50%;
+  animation: dog-spin 0.75s linear infinite;
+}
+
+@keyframes dog-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dog-spinner {
+    animation: none;
+    border-top-color: var(--text-muted);
+  }
+}
+
+.dog-loading-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.dog-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dog-image.is-loaded {
+  opacity: 1;
+}
+
+.dog-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.dog-actions .btn {
+  min-width: 10rem;
+}
+
+.dog-actions .btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+.dog-error {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #b91c1c;
+  text-align: center;
+}
+
+html[data-theme="dark"] .dog-error {
+  color: #fca5a5;
+}
+
 /* ===== Contact ===== */
 .section-contact {
   padding-block: clamp(4rem, 10vw, 7rem);

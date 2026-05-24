@@ -156,6 +156,86 @@
     }
   }
 
+  const DOG_API = "https://dog.ceo/api/breeds/image/random";
+
+  function initRandomDog() {
+    const btn = document.getElementById("dog-btn");
+    const viewer = document.getElementById("dog-viewer");
+    const loading = document.getElementById("dog-loading");
+    const img = document.getElementById("dog-image");
+    const placeholder = document.getElementById("dog-placeholder");
+    const errorEl = document.getElementById("dog-error");
+
+    if (!btn || !viewer || !img) return;
+
+    function setLoading(isLoading) {
+      viewer.classList.toggle("is-loading", isLoading);
+      viewer.setAttribute("aria-busy", String(isLoading));
+      btn.disabled = isLoading;
+      if (loading) loading.hidden = !isLoading;
+    }
+
+    function showError(message) {
+      if (!errorEl) return;
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    }
+
+    function clearError() {
+      if (errorEl) errorEl.hidden = true;
+    }
+
+    function loadImage(url) {
+      return new Promise(function (resolve, reject) {
+        const preload = new Image();
+        preload.onload = function () {
+          resolve(url);
+        };
+        preload.onerror = function () {
+          reject(new Error("圖片載入失敗，請再試一次"));
+        };
+        preload.src = url;
+      });
+    }
+
+    async function fetchRandomDog() {
+      clearError();
+      setLoading(true);
+      img.classList.remove("is-loaded");
+
+      if (placeholder) placeholder.hidden = true;
+
+      try {
+        const response = await fetch(DOG_API);
+        if (!response.ok) {
+          throw new Error("無法連線至狗狗 API，請稍後再試");
+        }
+
+        const data = await response.json();
+        if (data.status !== "success" || !data.message) {
+          throw new Error("API 回傳資料異常");
+        }
+
+        const imageUrl = await loadImage(data.message);
+        img.src = imageUrl;
+        img.alt = "隨機狗狗照片";
+        img.hidden = false;
+        img.classList.add("is-loaded");
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "載入失敗，請稍後再試";
+        showError(message);
+        if (!img.src && placeholder) {
+          placeholder.hidden = false;
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    btn.addEventListener("click", fetchRandomDog);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initTheme();
     if (themeToggle) {
@@ -165,5 +245,6 @@
     initSmoothScroll();
     initReveal();
     initYear();
+    initRandomDog();
   });
 })();

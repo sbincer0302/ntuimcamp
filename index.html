@@ -44,6 +44,7 @@
             <li><a href="#projects">作品</a></li>
             <li><a href="#skills">技能</a></li>
             <li><a href="#experience">經歷</a></li>
+            <li><a href="#dog">隨機狗狗</a></li>
           </ul>
         </nav>
 
@@ -101,6 +102,52 @@
               <span class="stat-label">多斷點完美呈現</span>
             </li>
           </ul>
+        </div>
+      </section>
+
+      <section id="dog" class="section section-dog">
+        <div class="container">
+          <header class="section-header reveal">
+            <p class="section-eyebrow">Playground</p>
+            <h2>隨機狗狗</h2>
+            <p class="section-lead">
+              點擊按鈕，從 Dog CEO API 取得一張可愛的隨機狗狗照片。
+            </p>
+          </header>
+          <div class="dog-panel reveal">
+            <div
+              class="dog-viewer"
+              id="dog-viewer"
+              aria-live="polite"
+              aria-busy="false"
+            >
+              <p class="dog-placeholder" id="dog-placeholder">
+                點擊下方按鈕，遇見一隻隨機狗狗
+              </p>
+              <div class="dog-loading" id="dog-loading" hidden>
+                <span class="dog-spinner" aria-hidden="true"></span>
+                <span class="dog-loading-text">載入中…</span>
+              </div>
+              <img
+                id="dog-image"
+                class="dog-image"
+                alt=""
+                hidden
+                decoding="async"
+              />
+            </div>
+            <div class="dog-actions">
+              <button
+                type="button"
+                class="btn btn-primary"
+                id="dog-btn"
+                aria-controls="dog-viewer"
+              >
+                隨機狗狗
+              </button>
+              <p class="dog-error" id="dog-error" role="alert" hidden></p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -434,6 +481,7 @@
           <a href="#about">關於</a>
           <a href="#projects">作品</a>
           <a href="#skills">技能</a>
+          <a href="#dog">隨機狗狗</a>
           <a href="#contact">聯絡</a>
         </nav>
         <p class="copyright">
