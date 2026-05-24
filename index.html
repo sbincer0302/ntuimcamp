@@ -8,6 +8,12 @@
       content="個人作品集 — 前端開發與 UI 設計"
     />
     <title>你的名字 | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -38,16 +44,18 @@
             <li><a href="#projects">作品</a></li>
             <li><a href="#skills">技能</a></li>
             <li><a href="#experience">經歷</a></li>
-            <li><a href="#footer">聯絡</a></li>
           </ul>
         </nav>
 
-        <button
-          type="button"
-          class="theme-toggle"
-          id="theme-toggle"
-          aria-label="切換淺色或深色主題"
-        ></button>
+        <div class="header-actions">
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="切換淺色或深色主題"
+          ></button>
+          <a class="btn btn-primary btn-header" href="#contact">聯絡我</a>
+        </div>
       </div>
     </header>
 
@@ -55,117 +63,226 @@
       <section id="hero" class="hero section">
         <div class="hero-inner reveal">
           <p class="eyebrow">Front-end · UI/UX</p>
-          <h1 class="hero-title">你的名字</h1>
+          <h1 class="hero-title">
+            把想法<br />
+            <span class="hero-title-accent">變成可觸及的體驗</span>
+          </h1>
           <p class="hero-slogan">
-            用程式與設計，把複雜變簡單，把想法變成可觸及的體驗。
+            我專注於語意化介面、可維護的前端架構與以使用者為中心的設計，
+            用程式與視覺把複雜變簡單。
           </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">開始合作</a>
+            <a class="btn btn-outline" href="#projects">查看作品</a>
+          </div>
         </div>
-        <div class="hero-decoration" aria-hidden="true"></div>
+        <div class="hero-decoration" aria-hidden="true">
+          <span class="hero-badge">Portfolio 2025/26</span>
+        </div>
+      </section>
+
+      <section class="stats section" aria-label="重點數據">
+        <div class="container">
+          <ul class="stats-grid">
+            <li class="stat-item reveal">
+              <span class="stat-value">3+</span>
+              <span class="stat-label">精選專案</span>
+            </li>
+            <li class="stat-item reveal">
+              <span class="stat-value">6</span>
+              <span class="stat-label">核心技術棧</span>
+            </li>
+            <li class="stat-item reveal">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">響應式與可及性</span>
+            </li>
+            <li class="stat-item reveal">
+              <span class="stat-value">RWD</span>
+              <span class="stat-label">多斷點完美呈現</span>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section id="about" class="section section-about">
         <div class="container">
           <header class="section-header reveal">
+            <p class="section-eyebrow">About</p>
             <h2>關於我</h2>
             <p class="section-lead">
               簡短介紹你的背景、正在專注的方向，以及你如何看待產品與使用者。
             </p>
           </header>
-          <div class="about-grid">
-            <div class="about-card reveal">
+          <div class="value-grid">
+            <article class="value-card reveal">
+              <span class="value-number">01</span>
               <h3>背景</h3>
               <p>
                 我專注於語意化 HTML、可維護的 CSS 與穩健的 JavaScript，
                 喜歡在細節裡打磨質感，讓介面既好看也好用。
               </p>
-            </div>
-            <div class="about-card reveal">
+            </article>
+            <article class="value-card reveal">
+              <span class="value-number">02</span>
               <h3>專業</h3>
               <p>
                 從版型與元件設計到互動與可及性，我習慣以使用者為中心迭代，
                 並與設計、後端協作讓專案順利落地。
               </p>
-            </div>
+            </article>
+            <article class="value-card reveal">
+              <span class="value-number">03</span>
+              <h3>合作方式</h3>
+              <p>
+                從原型到上線，我重視溝通節奏與交付品質，
+                讓每個里程碑都清晰可追蹤。
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
       <section id="projects" class="section section-projects">
         <div class="container">
-          <header class="section-header reveal">
-            <h2>精選作品</h2>
-            <p class="section-lead">
-              三個代表性專案；將下方標題、描述與圖片替換為你的真實作品。
-            </p>
+          <header class="section-header section-header--row reveal">
+            <div>
+              <p class="section-eyebrow">Featured work</p>
+              <h2>精選作品</h2>
+              <p class="section-lead">
+                三個代表性專案；將下方標題、描述與圖片替換為你的真實作品。
+              </p>
+            </div>
+            <a class="link-arrow" href="#contact">討論你的專案</a>
           </header>
 
-          <div class="projects-grid">
-            <article class="project-card reveal">
+          <div class="projects-list">
+            <article class="case-card reveal">
               <div
-                class="project-thumb"
+                class="case-thumb case-thumb--1"
                 role="img"
                 aria-label="作品一預覽圖佔位"
               ></div>
-              <div class="project-body">
+              <div class="case-body">
+                <ul class="case-tags" aria-label="專案類型">
+                  <li>#響應式設計</li>
+                  <li>#品牌官網</li>
+                  <li>#無障礙</li>
+                </ul>
                 <h3>響應式品牌官網</h3>
                 <p>
                   以 Grid 與 Flex 打造多斷點版面，兼顧效能與可讀性，
                   並落實基礎 SEO 與無障礙標記。
                 </p>
-                <ul class="tags" aria-label="使用技術">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                </ul>
+                <dl class="case-meta">
+                  <div>
+                    <dt>技術</dt>
+                    <dd>HTML, CSS, JavaScript</dd>
+                  </div>
+                  <div>
+                    <dt>成果</dt>
+                    <dd>全裝置一致體驗</dd>
+                  </div>
+                </dl>
+                <a class="link-arrow" href="#contact">Explore</a>
               </div>
             </article>
 
-            <article class="project-card reveal">
+            <article class="case-card reveal">
               <div
-                class="project-thumb project-thumb--alt"
+                class="case-thumb case-thumb--2"
                 role="img"
                 aria-label="作品二預覽圖佔位"
               ></div>
-              <div class="project-body">
+              <div class="case-body">
+                <ul class="case-tags" aria-label="專案類型">
+                  <li>#資料視覺化</li>
+                  <li>#互動設計</li>
+                  <li>#API</li>
+                </ul>
                 <h3>互動式儀表板</h3>
                 <p>
                   資料視覺化與篩選互動，採模組化結構方便擴充，
                   並維持鍵盤操作與焦點順序清晰。
                 </p>
-                <ul class="tags" aria-label="使用技術">
-                  <li>JavaScript</li>
-                  <li>CSS</li>
-                  <li>API</li>
-                </ul>
+                <dl class="case-meta">
+                  <div>
+                    <dt>技術</dt>
+                    <dd>JavaScript, CSS, API</dd>
+                  </div>
+                  <div>
+                    <dt>成果</dt>
+                    <dd>模組化可擴充架構</dd>
+                  </div>
+                </dl>
+                <a class="link-arrow" href="#contact">Explore</a>
               </div>
             </article>
 
-            <article class="project-card reveal">
+            <article class="case-card reveal">
               <div
-                class="project-thumb project-thumb--alt2"
+                class="case-thumb case-thumb--3"
                 role="img"
                 aria-label="作品三預覽圖佔位"
               ></div>
-              <div class="project-body">
+              <div class="case-body">
+                <ul class="case-tags" aria-label="專案類型">
+                  <li>#設計系統</li>
+                  <li>#元件庫</li>
+                  <li>#Design Tokens</li>
+                </ul>
                 <h3>設計系統元件庫</h3>
                 <p>
                   定義色彩、字級與間距權杖，統一按鈕、卡片與表單樣式，
                   讓團隊產出一致且可重複使用。
                 </p>
-                <ul class="tags" aria-label="使用技術">
-                  <li>CSS</li>
-                  <li>Design</li>
-                  <li>Docs</li>
-                </ul>
+                <dl class="case-meta">
+                  <div>
+                    <dt>技術</dt>
+                    <dd>CSS, Figma, Docs</dd>
+                  </div>
+                  <div>
+                    <dt>成果</dt>
+                    <dd>團隊產出效率提升</dd>
+                  </div>
+                </dl>
+                <a class="link-arrow" href="#contact">Explore</a>
               </div>
             </article>
           </div>
         </div>
       </section>
 
+      <section class="section section-why">
+        <div class="container">
+          <header class="section-header reveal">
+            <p class="section-eyebrow">Why work with me</p>
+            <h2>為什麼選擇我？</h2>
+          </header>
+          <ul class="why-grid">
+            <li class="why-item reveal">
+              <h3>以使用者為中心</h3>
+              <p>從資訊架構到互動細節，每個決策都對齊真實使用情境。</p>
+            </li>
+            <li class="why-item reveal">
+              <h3>開發者友善的設計</h3>
+              <p>語意化標記、可重用元件與清晰的 CSS 結構，降低實作成本。</p>
+            </li>
+            <li class="why-item reveal">
+              <h3>經得起時間的質感</h3>
+              <p>不追逐短期流行，專注可擴充的版型與一致的視覺語言。</p>
+            </li>
+            <li class="why-item reveal">
+              <h3>準時交付</h3>
+              <p>重視溝通與里程碑，在有限時間內做出可上線的品質。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       <section id="skills" class="section section-skills">
         <div class="container">
           <header class="section-header reveal">
+            <p class="section-eyebrow">Stack</p>
             <h2>技能</h2>
             <p class="section-lead">
               我擅長的技術棧與工具；可依你的履歷調整項目與排序。
@@ -185,6 +302,7 @@
       <section id="experience" class="section section-experience">
         <div class="container">
           <header class="section-header reveal">
+            <p class="section-eyebrow">Timeline</p>
             <h2>經歷</h2>
             <p class="section-lead">
               比賽、檢定與活動紀錄；請替換為你的真實項目與日期。
@@ -230,9 +348,65 @@
           </ul>
         </div>
       </section>
+
+      <section id="contact" class="section section-contact">
+        <div class="container">
+          <div class="contact-panel reveal">
+            <header class="contact-header">
+              <p class="section-eyebrow">Contact</p>
+              <h2>有專案想討論？<br />一起聊聊</h2>
+              <p class="section-lead">
+                填寫表單或直接寄信，我會盡快回覆你。
+              </p>
+            </header>
+            <form class="contact-form" action="mailto:hello@example.com" method="get">
+              <div class="form-row">
+                <label for="contact-name">你的名字</label>
+                <input
+                  id="contact-name"
+                  name="subject"
+                  type="text"
+                  placeholder="輸入姓名"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <label for="contact-email">Email</label>
+                <input
+                  id="contact-email"
+                  name="body"
+                  type="email"
+                  placeholder="your@email.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <label for="contact-message">訊息</label>
+                <textarea
+                  id="contact-message"
+                  name="body"
+                  rows="4"
+                  placeholder="簡述你的專案或合作需求"
+                ></textarea>
+              </div>
+              <fieldset class="form-budget">
+                <legend>預算範圍（選填）</legend>
+                <div class="budget-options">
+                  <label><input type="radio" name="budget" value="small" /> 小型專案</label>
+                  <label><input type="radio" name="budget" value="medium" /> 中型專案</label>
+                  <label><input type="radio" name="budget" value="large" /> 大型專案</label>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn btn-primary btn-full">送出訊息</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer id="footer" class="site-footer section">
+    <footer id="footer" class="site-footer">
       <div class="container footer-inner reveal">
         <div class="footer-brand">
           <p class="footer-name">你的名字</p>
@@ -256,6 +430,12 @@
             <a href="mailto:hello@example.com">Email</a>
           </li>
         </ul>
+        <nav class="footer-nav" aria-label="頁尾導覽">
+          <a href="#about">關於</a>
+          <a href="#projects">作品</a>
+          <a href="#skills">技能</a>
+          <a href="#contact">聯絡</a>
+        </nav>
         <p class="copyright">
           <small
             >&copy; <span id="year"></span> 你的名字. 保留所有權利。</small

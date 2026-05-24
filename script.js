@@ -25,23 +25,23 @@
   }
 
   function getPreferredTheme() {
-    if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      return "light";
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
     }
-    return "dark";
+    return "light";
   }
 
   function applyTheme(theme) {
     const root = document.documentElement;
-    if (theme === "light") {
-      root.setAttribute("data-theme", "light");
+    if (theme === "dark") {
+      root.setAttribute("data-theme", "dark");
     } else {
       root.removeAttribute("data-theme");
     }
     if (themeToggle) {
       themeToggle.setAttribute(
         "aria-label",
-        theme === "light" ? "切換為深色主題" : "切換為淺色主題"
+        theme === "dark" ? "切換為淺色主題" : "切換為深色主題"
       );
     }
   }
@@ -53,8 +53,8 @@
   }
 
   function toggleTheme() {
-    const isLight = document.documentElement.getAttribute("data-theme") === "light";
-    const next = isLight ? "dark" : "light";
+    const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    const next = isDark ? "light" : "dark";
     applyTheme(next);
     setStoredTheme(next);
   }
@@ -97,8 +97,19 @@
     });
   }
 
+  function scrollToSection(id) {
+    if (!id || id === "#") return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    closeNav();
+    if (history.replaceState) {
+      history.replaceState(null, "", id);
+    }
+  }
+
   function initSmoothScroll() {
-    const links = document.querySelectorAll('.site-nav a[href^="#"]');
+    const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(function (anchor) {
       anchor.addEventListener("click", function (e) {
         const id = anchor.getAttribute("href");
@@ -106,29 +117,9 @@
         const target = document.querySelector(id);
         if (!target) return;
         e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        closeNav();
-        if (history.replaceState) {
-          history.replaceState(null, "", id);
-        }
+        scrollToSection(id);
       });
     });
-
-    const logo = document.querySelector('.logo[href^="#"]');
-    if (logo) {
-      logo.addEventListener("click", function (e) {
-        const id = logo.getAttribute("href");
-        if (!id || id === "#") return;
-        const target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        closeNav();
-        if (history.replaceState) {
-          history.replaceState(null, "", id);
-        }
-      });
-    }
   }
 
   function initReveal() {
